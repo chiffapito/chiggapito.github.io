@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎉 Secret Birthday Surprise 🎉</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#fdfbfb, #ebedee);
+      text-align: center;
+      padding: 50px;
+    }
+    #content {
+      display: none;
+      margin-top: 30px;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔒 Enter the Password</h1>
+  <p>This page unlocks only on <strong>June 25, 2025</strong></p>
+  <input type="password" id="password" placeholder="Enter password here">
+  <br>
+  <button onclick="checkAccess()">Unlock</button>
+  
+  <div id="message" style="color: red; margin-top: 15px;"></div>
+
+  <div id="content">
+    <h2>🎂 Happy Birthday, [Name]! 🎉</h2>
+    <p>Dear [Name],</p>
+    <p>
+      Today is a special day, and I just want to let you know how much you mean to me. 
+      I hope your birthday is filled with love, laughter, and unforgettable memories. 🎈💖
+    </p>
+    <p>Love,<br>[Your Name]</p>
+  </div>
+
+  <script>
+    function checkAccess() {
+      const correctPassword = "happyday2025"; // 🔑 Set your password here
+      const input = document.getElementById("password").value;
+      const message = document.getElementById("message");
+      const content = document.getElementById("content");
+
+      const today = new Date();
+      const allowedDate = new Date("2025-06-22"); // 🎂 Set your unlock date here
+
+      // Remove time from both dates
+      today.setHours(0, 0, 0, 0);
+      allowedDate.setHours(0, 0, 0, 0);
+
+      if (input !== correctPassword) {
+        message.textContent = "❌ Incorrect password.";
+        return;
+      }
+
+      if (today.getTime() !== allowedDate.getTime()) {
+        message.textContent = "⏳ Come back on June 25, 2025!";
+        return;
+      }
+
+      // If both are correct
+      message.textContent = "";
+      content.style.display = "block";
+    }
+  </script>
+</body>
+</html>
